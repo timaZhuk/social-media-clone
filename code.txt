@@ -1,0 +1,77 @@
+1----DONE create 'backend folder'
+1-a create react application with 'frontend folder'
+
+--Create the vite project in react
+
+npm create vite@5.2.0 frontend
+
+Done. Now run:
+
+  cd frontend
+  npm install
+  npm run dev
+2---create backend environment
+in   "twitter-clone" folder
+npm init -y
+install these packages:
+npm install express mongoose jsonwebtoken bcryptjs dotenv cors cookie-parser cloudinary
+npm i -D nodemon
+
+jsonwebtoken -- for authentication
+bcryptjs -- hash passwords
+dotenv -- read content of .env files
+cookie-parser -- get the cookies from request
+
+3-
+in "twitter clone folder" in package.json
+write "type":"modules"  
+A new way of importing modules
+
+4--Add these snippets aolso
+"scripts": {
+    "dev": "nodemon backend/server.js",
+    "start": "node backend/server.js"
+  },
+5-- change the "main":"backend/server.js"
+
+6--Create folder "routes" for express app routes and "controllers" folder
+7--"models" folder for DB tables
+8-- in routes folder create "auth.routes.js". it will manage our routes
+http://localhost:8000/api/auth/signup -- test this endpoint
+9 -- in 'controllers' we have the functions wich we recall in 'routes' folder
+10--in 'twitter-clone' folder create the  .env file where we save MONGO_URL
+
+11--import dotenv from "dotenv" in server.js 
+dotenv.config();
+it helps to use .env variables inside file
+
+
+-------------------------------------------------------------------------------------------
+!!IMPORTANT
+***DEPLOYING****
+HOW to deploy entire upplication FRONTEND and BACKEND on one localhost or one domain name
+1# in server.js 
+import path from "path"
+--get the main root folder path "C:\\mern-course=site"
+
+const __dirname = path.resolve()
+
+--"npm run biuld" this command make "dist" folder for production
+
+--make react fronted file like static for backend
+if (process.env.NODE_ENV === "production"){
+  app.use(express.static(path.join(__dirname, "/fronted/dist"))
+  app.get("*", (req, res)=>{
+    res.sendFile(path.resolve(__dirname, "fronted", "dist", "index.html"))
+  })
+}
+
+**it installs dependencies and  build app 
+#2 in mern-course-site--> package.json file
+add this on "scripts"
+-- "build":"npm install && npm install --prefix frontend && npm run build --prefix fronted"
+-- "start":"NODE_ENV=production node backend/server.js"
+
+
+
+
