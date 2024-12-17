@@ -1,0 +1,49 @@
+# -- Hashing the code
+--This line creates a constant variable named salt.
+--bcrypt is likely a library used for password hashing.
+-- genSalt(10) generates a random salt value with a cost factor of 10.
+The salt is a random string used to make it more difficult to crack passwords stored 
+in a database.
+
+#---
+const hashPassword = await bcrypt.hash(password, salt);
+
+This line creates another constant variable named hashPassword.
+It uses the bcrypt library again, this time with the hash function.
+The function takes two arguments: the original password (password) and the generated 
+salt (salt).
+It combines the password with the salt and applies a hashing algorithm, resulting in a unique and secure string (hashPassword).
+ await ensures the hashing process finishes before continuing.
+
+#---
+import jwt from "jsonwebtoken";
+
+Import: This line imports the jsonwebtoken library, a popular Node.js package used for creating and verifying JSON Web Tokens (JWTs).
+
+#---
+res.cookie("jwt", token, { ... });
+
+This line sets a cookie named "jwt" in the response.
+Cookie Name: The first argument, "jwt", is the name of the cookie.
+Cookie Value: The second argument, token, is the actual JWT that will be stored 
+in the cookie.
+Cookie Options: The third argument is an object specifying cookie options:
+maxAge: Sets the maximum age of the cookie in milliseconds. In this case, it's 15 days.
+
+httpOnly: This flag prevents client-side JavaScript from accessing the cookie, 
+enhancing security.
+sameSite: This option controls how the cookie is sent with cross-site requests. 
+"strict" is a stricter setting that limits cookie sending to same-site requests.
+secure: This flag ensures the cookie is only sent over HTTPS connections, enhancing 
+security.
+
+{
+    "_id": "67609688b0e5bd2d57a3a7ce",
+    "fullName": "John Doe",
+    "username": "johndoe",
+    "email": "lohn@twitter.com",
+    "followers": [],
+    "following": [],
+    "profileImg": "",
+    "coverImg": ""
+}

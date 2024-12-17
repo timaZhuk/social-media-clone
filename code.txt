@@ -41,9 +41,24 @@ http://localhost:8000/api/auth/signup -- test this endpoint
 9 -- in 'controllers' we have the functions wich we recall in 'routes' folder
 10--in 'twitter-clone' folder create the  .env file where we save MONGO_URL
 
-11--import dotenv from "dotenv" in server.js 
+11 -- import dotenv from "dotenv" in server.js 
 dotenv.config();
 it helps to use .env variables inside file
+12 - Creating 'user' model in 'models' folder
+13 - then go to contrillers/auth.contriller.js and implement POST GET request
+to create user and login and logout
+14 - in 'server.js' add app.use(express.json())
+15 - status codes: 201 - something was created, 404 file not found, 500 server error
+16 - in GitBash terminal 
+openssl rand -base64 32
+to generate JWT_SECRET string
+17 - add functionality to Signup, Login, logout
+18 - added getMe function for (authorized users)
+19 - Creating 'middleware' folder where we will check out, decode jwt for users actions
+20 - 
+
+
+
 
 
 -------------------------------------------------------------------------------------------
