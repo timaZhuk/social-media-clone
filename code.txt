@@ -45,7 +45,7 @@ http://localhost:8000/api/auth/signup -- test this endpoint
 dotenv.config();
 it helps to use .env variables inside file
 12 - Creating 'user' model in 'models' folder
-13 - then go to contrillers/auth.contriller.js and implement POST GET request
+13 - then go to controllers/auth.controller.js and implement POST GET request
 to create user and login and logout
 14 - in 'server.js' add app.use(express.json())
 15 - status codes: 201 - something was created, 404 file not found, 500 server error
@@ -56,7 +56,13 @@ to generate JWT_SECRET string
 18 - added getMe function for (authorized users)
 19 - Creating 'middleware' folder where we will check out, decode jwt for users actions
 20 - 
+--Create user.controller.js and user.routes.js
+, look at profile update, follow, delete
 
+21 --create the notification modle in models
+22 -- ADD API data to .env from CLOUDINARY_URL=cloudinary://<your_api_key>:<your_api_secret>@disicfpk1
+23 -- in server.js configure your coudinary account
+24 -- 
 
 
 

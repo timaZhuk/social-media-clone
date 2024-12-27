@@ -6,7 +6,7 @@ import {
   getMe,
 } from "../controllers/auth.controller.js";
 import { protectRoute } from "../middleware/protectRoute.js";
-import cookieParser from "cookie-parser";
+//import cookieParser from "cookie-parser";
 
 const router = express.Router();
 

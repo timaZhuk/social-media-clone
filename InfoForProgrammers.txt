@@ -12,13 +12,15 @@ This line creates another constant variable named hashPassword.
 It uses the bcrypt library again, this time with the hash function.
 The function takes two arguments: the original password (password) and the generated 
 salt (salt).
-It combines the password with the salt and applies a hashing algorithm, resulting in a unique and secure string (hashPassword).
- await ensures the hashing process finishes before continuing.
+It combines the password with the salt and applies a hashing algorithm, resulting 
+in a unique and secure string (hashPassword).
+await ensures the hashing process finishes before continuing.
 
 #---
 import jwt from "jsonwebtoken";
 
-Import: This line imports the jsonwebtoken library, a popular Node.js package used for creating and verifying JSON Web Tokens (JWTs).
+Import: This line imports the jsonwebtoken library, a popular Node.js package 
+used for creating and verifying JSON Web Tokens (JWTs).
 
 #---
 res.cookie("jwt", token, { ... });

@@ -6,32 +6,32 @@ import { generateTokenAndSetCookie } from "../lib/utils/generateToken.js";
 export const signup = async (req, res) => {
   try {
     const { fullName, username, email, password } = req.body;
-    //---check email format is valid
+    //-CHECK--check email format is valid
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       //400-errors in fields
       return res.status(400).json({ error: "Invalid email format" });
     }
-    //--check out User has already exist
+    //-CHECK-check out User has already exist
     const existingUser = await User.findOne({ username });
     if (existingUser) {
       return res.status(400).json({ error: "Username is already taken" });
     }
 
-    //--check out Email existance (it has been created before)
+    //-CHECK-check out Email existance (it has been created before)
     const existingEmail = await User.findOne({ email });
     if (existingEmail) {
       return res.status(400).json({ error: "Email is already exist (taken)" });
     }
 
-    //--check out password's length
+    //-CHECK-check out password's length
     if (password.length < 6) {
       return res
         .status(400)
         .json({ error: "Password must be at least 6 characters" });
     }
 
-    //hash password
+    // HASH hash password
     //convert password to something like this FYGf45!UYhjgjhbds4654dsfr##54
     const salt = await bcrypt.genSalt(10);
     const hashPassword = await bcrypt.hash(password, salt);
@@ -42,7 +42,7 @@ export const signup = async (req, res) => {
       email: email,
       password: hashPassword,
     });
-    //---------check out new User------------------
+    //---CHECK AND SAVE------check out new User------------------
     if (newUser) {
       //function generate Token and Cookies
       generateTokenAndSetCookie(newUser._id, res);
@@ -61,7 +61,9 @@ export const signup = async (req, res) => {
     } else {
       res.status(400).json({ error: "Invalid user data" });
     } //if-else end
-  } catch (error) {}
+  } catch (error) {
+    res.status(400).json({ error: "Internal Server Error" });
+  }
 };
 
 //-----LOGIN
@@ -106,10 +108,12 @@ export const logout = async (req, res) => {
       message: "Logged out!!!",
     });
   } catch (error) {
-    cpnsole.log("Error in logout controller", error.message);
+    console.log("Error in logout controller", error.message);
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
+
+//---GET ME------------
 
 //---GetMe for checking out whether user is authenticated or not
 export const getMe = async (req, res) => {
